@@ -5,14 +5,31 @@ import sys
 pygame.init()
 
 # Set up display
-width, height = 500, 700  # Increased dimensions
+width, height = 500, 700
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Calculator")
 
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-GRAY = (200, 200, 200)
+BUTTON_COLORS = {
+    '7': (255, 0, 0),    # Red
+    '8': (0, 255, 0),    # Green
+    '9': (0, 0, 255),    # Blue
+    '/': (255, 128, 0),  # Yellow
+    '4': (255, 165, 0),  # Orange
+    '5': (75, 0, 130),   # Indigo
+    '6': (238, 130, 238), # Violet
+    '*': (0, 255, 255),   # Cyan
+    '1': (255, 192, 203), # Pink
+    '2': (128, 0, 128),   # Purple
+    '3': (255, 55, 55), # White
+    '-': (128, 128, 0),   # Olive
+    '0': (0, 128, 0),     # Dark Green
+    'C': (255, 0, 255),   # Magenta
+    '=': (0, 0, 0),       # Black
+    '+': (192, 192, 192)  # Light Gray
+}
 
 # Font
 font = pygame.font.Font(None, 36)
@@ -28,8 +45,8 @@ def draw_buttons():
         ('0', 50, 450), ('C', 150, 450), ('=', 250, 450), ('+', 350, 450)
     ]
     for (text, x, y) in buttons:
-        pygame.draw.rect(screen, GRAY, (x, y, 80, 80))
-        label = font.render(text, True, BLACK)
+        pygame.draw.rect(screen, BUTTON_COLORS[text], (x, y, 80, 80), border_radius=10)  # Rounded buttons
+        label = font.render(text, True, WHITE)  # White text on buttons
         screen.blit(label, (x + 30, y + 20))
 
 def calculate(expression):
@@ -40,7 +57,7 @@ def calculate(expression):
 
 # Main loop
 while True:
-    screen.fill(WHITE)
+    screen.fill(WHITE)  # Fill the background with white
     draw_buttons()
     
     # Display current input
