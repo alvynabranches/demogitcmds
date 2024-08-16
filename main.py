@@ -5,7 +5,7 @@ import sys
 pygame.init()
 
 # Set up display
-width, height = 400, 600
+width, height = 500, 700  # Increased dimensions
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Calculator")
 
