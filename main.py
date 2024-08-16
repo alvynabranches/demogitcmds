@@ -57,5 +57,6 @@ while True:
             elif event.unicode == 'C':
                 input_str = ""
             elif event.unicode == '=':
-                result = calculate(input_str)
-                input_str = result
+                input_str = calculate(input_str)
+
+    pygame.display.update()  # Update the display
